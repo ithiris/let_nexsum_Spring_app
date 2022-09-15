@@ -1,10 +1,10 @@
-package com.example.springbootapp;
+package com.provility;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SpringBootAppApplicationTests {
+class MySpringAppApplicationTests {
 
     @Test
     void contextLoads() {
