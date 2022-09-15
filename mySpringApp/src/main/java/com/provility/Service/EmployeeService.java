@@ -3,7 +3,7 @@ package com.provility.Service;
 import com.provility.entity.Employee;
 import com.provility.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,8 +17,9 @@ public class EmployeeService {
         return employeeRepository.save(employee);
     }
 
-    public Employee getEmployee(int id) {
+    public Employee getEmployeeById(int id) {
         return employeeRepository.findById(id).get();
+
     }
 
     public Employee update(Employee employee) {
@@ -39,5 +40,9 @@ public class EmployeeService {
 
     public void setEmployeeRepository(EmployeeRepository employeeRepository) {
         this.employeeRepository = employeeRepository;
+    }
+
+    public void deleteEmployeeObjById(int id) {
+        employeeRepository.deleteById(id);
     }
 }
