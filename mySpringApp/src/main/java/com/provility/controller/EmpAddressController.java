@@ -2,6 +2,7 @@ package com.provility.controller;
 
 
 import com.provility.Service.EmpAddressService;
+import com.provility.entity.Employee;
 import com.provility.entity.EmployeeAddress;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,4 +28,5 @@ public class EmpAddressController {
     public EmployeeAddress getEmployeeAddressById(@PathVariable int id) {
         return empAddressService.getEmployeeAddressById(id);
     }
+
 }

@@ -1,6 +1,7 @@
 package com.provility.Service;
 
 import com.provility.entity.Employee;
+import com.provility.entity.EmployeeAddress;
 import com.provility.repository.EmpAddressRepository;
 import com.provility.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,8 +38,18 @@ public class EmployeeService {
     }
 
     public List<Employee> findAllEmployees() {
+        List<Employee> employee = employeeRepository.findAll();
+        List<EmployeeAddress> empAddress = empAddressRepository.findAll();
+        employee.forEach((emp -> {
+            empAddress.forEach((empAdd -> {
+                if (emp.id.equals(empAdd.empId)) {
+                    emp.employeeAddresses.add(empAdd);
+                }
+            }));
+        }));
 
-        return employeeRepository.findAll();
+
+        return employee;
     }
 
     public EmployeeRepository getEmployeeRepository() {
