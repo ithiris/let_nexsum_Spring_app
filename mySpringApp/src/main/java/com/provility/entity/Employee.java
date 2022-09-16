@@ -7,7 +7,7 @@ import java.util.List;
 @Table(name = "employee")
 public class Employee {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public Integer id;
 
     @Column(length = 45, nullable = false, name = "first_name")
@@ -16,17 +16,18 @@ public class Employee {
     public String lastName;
 
     @OneToMany(mappedBy = "id")
-    public List<EmpLoyeeAddress> empLoyeeAddresses;
-
-    public Employee(String firstName, String lastName, List<EmpLoyeeAddress> empLoyeeAddresses) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.empLoyeeAddresses =empLoyeeAddresses;
-    }
+    public List<EmployeeAddress> employeeAddresses;
 
     public Employee() {
 
     }
+
+    public Employee(String firstName, String lastName, List<EmployeeAddress> employeeAddresses) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.employeeAddresses = employeeAddresses;
+    }
+
 
     public String getFirstName() {
         return firstName;
@@ -44,20 +45,14 @@ public class Employee {
         this.lastName = lastName;
     }
 
-    public List<EmpLoyeeAddress> getEmpLoyeeAddresses() {
-        return empLoyeeAddresses;
-    }
-
-    public void setEmpLoyeeAddresses(List<EmpLoyeeAddress> empLoyeeAddresses) {
-        this.empLoyeeAddresses = empLoyeeAddresses;
-    }
 
     @Override
     public String toString() {
-        return "EmployeeEntity{" +
-                "id='" + id + '\'' +
-                "firstName='" + firstName + '\'' +
+        return "Employee{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
+                ", empLoyeeAddresses=" + employeeAddresses +
                 '}';
     }
 }

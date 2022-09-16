@@ -2,8 +2,6 @@ package com.provility.controller;
 
 import com.provility.Service.EmployeeService;
 import com.provility.entity.Employee;
-import com.provility.repository.EmployeeRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,19 +10,14 @@ import java.util.List;
 @RestController
 @RequestMapping(path = "/employee")
 public class EmployeeController {
-    @Autowired
-    public EmployeeRepository employeeRepository;
-    @Autowired
-    public EmployeeService employeeService;
 
 
-    public EmployeeService getEmployeeService() {
-        return employeeService;
-    }
+    final EmployeeService employeeService;
 
-    public void setEmployeeService(EmployeeService employeeService) {
+    public EmployeeController(EmployeeService employeeService) {
         this.employeeService = employeeService;
     }
+
 
     @PostMapping(path = "/add")
     public Employee addEmployee(@RequestBody Employee employee) {
